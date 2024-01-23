@@ -21,7 +21,7 @@ public class ProdutosDAO {
     public void cadastrarProduto (ProdutosDTO produto){
         
         String sql = "INSERT INTO produtos (nome,valor, status) VALUES (?,?,?) ";
-        
+           
         try {
             PreparedStatement prep = this.conn.prepareStatement(sql);
             prep.setString(1, produto.getNome());
@@ -34,6 +34,7 @@ public class ProdutosDAO {
             System.out.println("Não foi possível cadastrar o produto " + ex.getMessage());
         }
     }
+     
     
     public ArrayList<ProdutosDTO> listarProdutos(){
         ArrayList<ProdutosDTO> listagem = new ArrayList<>();
@@ -66,10 +67,10 @@ public class ProdutosDAO {
             prep.setString(1,"Vendido");
             prep.setInt(2, id);
             prep.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso");
+            JOptionPane.showMessageDialog(null, "Produto vendido com sucesso");
         
         }catch (SQLException ex){
-            System.out.println("Não foi possível atualizar o produto " + ex.getMessage());
+            System.out.println("Não foi possível vender o produto " + ex.getMessage());
         }
         
     }
